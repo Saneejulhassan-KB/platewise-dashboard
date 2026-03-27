@@ -5,13 +5,25 @@ import Topbar from "./Topbar";
 
 const DashboardLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
-      <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
-      <div className={`transition-all duration-300 ${collapsed ? "ml-[70px]" : "ml-[250px]"}`}>
-        <Topbar />
-        <main className="p-6">
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm z-40 lg:hidden" onClick={() => setMobileOpen(false)} />
+      )}
+
+      <Sidebar
+        collapsed={collapsed}
+        onToggle={() => setCollapsed(!collapsed)}
+        mobileOpen={mobileOpen}
+        onMobileClose={() => setMobileOpen(false)}
+      />
+
+      <div className={`transition-all duration-300 ${collapsed ? "lg:ml-[70px]" : "lg:ml-[250px]"}`}>
+        <Topbar onMenuToggle={() => setMobileOpen(!mobileOpen)} />
+        <main className="p-4 sm:p-6">
           <Outlet />
         </main>
       </div>

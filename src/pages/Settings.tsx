@@ -5,11 +5,13 @@ const Settings = () => {
   const { theme, toggleTheme } = useThemeContext();
 
   return (
-    <div className="space-y-6 animate-fade-up max-w-3xl">
+    <div className="space-y-6 animate-fade-up">
       <div>
         <h1 className="text-2xl font-bold text-foreground">Settings</h1>
         <p className="text-sm text-muted-foreground mt-1">System preferences & profile</p>
       </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
       {/* Theme */}
       <div className="glass-card rounded-2xl p-5">
@@ -96,6 +98,7 @@ const Settings = () => {
             Change Password
           </button>
         </div>
+      </div>
       </div>
     </div>
   );

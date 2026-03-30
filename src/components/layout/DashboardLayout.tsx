@@ -21,7 +21,7 @@ const DashboardLayout = () => {
         onMobileClose={() => setMobileOpen(false)}
       />
 
-      <div className={`transition-all duration-300 ${collapsed ? "lg:ml-[70px]" : "lg:ml-[250px]"}`}>
+      <div className={`transition-all duration-300 ${collapsed ? "lg:ml-[70px]" : "lg:ml-[260px]"}`}>
         <Topbar onMenuToggle={() => setMobileOpen(!mobileOpen)} />
         <main className="p-4 sm:p-6">
           <Outlet />
